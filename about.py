@@ -1,117 +1,107 @@
 """
-This file provides standard information to
-help with debugging. 
+about.py: 
 
-This file is named:   about.py
-This module is named: about
+A utility script to display essential debugging information. 
+It provides system information, Python details, file paths, and more. 
 
-It uses a built-in attribute representing the file name:
+This provides an overview of the system and configuration.
 
-    print(get_header(__file__))
+To use, simply execute this script: `python about.py`
+It will print this information to a new file named `about.txt`.
 
-To learn more, search:
+This script does NOT require a virtual environment.
+It uses ONLY modules found in the Python standard library.
 
-    builtin attributes python
-
+Author: Denise Case
 """
 
-# imports (all of these are from the standard library)
+# Import from Python Standard Library
 
 import datetime
 import os
 import platform
 import sys
 
-# declare program constants
-# sometimes, data is kept in a folder named 'data'
-# in this repo, data is in the same directory as the source code
+# Declare program constants
 
-data_folder = ""
-divider = "=============================================================="
+DIVIDER = "=" * 70  # A string divider for cleaner output formatting
+OUTPUT_FILENAME = "about.txt"  # File name for saving the debug information
 
-# define helper functions
+# Retrieve additional system information using platform and os modules
+
+build_date, compiler = platform.python_build()
+implementation = platform.python_implementation()
+architecture = platform.architecture()[0]
+user_home = os.path.expanduser("~")
+
+# Define program functions (bits of reusable code)
 
 
 def get_source_directory_path():
-    """Returns the absolute path to this source directory."""
+    """
+    Returns the absolute path to the directory containing this script.
+    """
     dir = os.path.dirname(os.path.abspath(__file__))
     return dir
 
 
-def get_data_directory_path():
-    """Returns the absolute path to the data directory."""
-    datapath = os.sep.join([os.getcwd(), data_folder])
-    return datapath
+def print_info_to_file(filename, content):
+    """
+    Print the provided content to a specified file.
 
-
-def get_data_file_path(fn):
-    """Return the absolute path to a data file given just the file name (fn)."""
-    dir = get_data_directory_path()
-    fullPath = os.sep.join([dir, fn])
-    return fullPath
+    Args:
+    - filename (str): Name of the file to save the content in.
+    - content (str): The content to save.
+    """
+    with open(filename, "w") as f:
+        f.write(content)
 
 
 def get_header(fn):
-    """This function prints helpful information about a file."""
+    """
+    Constructs a formatted string that provides helpful information.
+
+    Args:
+    - fn (str): Path to the file for which the information should be generated.
+
+    Returns:
+    - str: Formatted debug information.
+    """
     return f"""
-
-{divider}
-{divider}
-
- Welcome! 
-
- It's {datetime.date.today()} at {datetime.datetime.now().strftime("%I:%M %p")}
-
- This file is running on:    {os.name} {platform.system()} {platform.release()}
- 
- The Python version is:      {platform.python_version()}
- 
- The Python interpreter is at: 
- {sys.executable}
-
- The active environment should be either conda OR pip (one should be None):
-
-     Active conda env is: {os.environ.get('CONDA_DEFAULT_ENV') }
-     Active pip env is:   {os.environ.get('PIP_DEFAULT_ENV')}
- 
- The path to the active virtual environment is:
-
- {sys.prefix}
- 
- The Current Working Directory (CWD) where this command was launched is:
-
- {os.getcwd()}
- 
- The absolute path to the data directory is:
-
- {get_data_directory_path()}
- 
- The absolute path to this source directory is:
-
- {get_source_directory_path()}
- 
- The absolute path to this file is:
-
- {fn}
- 
-{divider}
-{divider}
-
+{DIVIDER}
+{DIVIDER}
+ Welcome to the Python Debugging Information Utility for NW 44-671!
+ Date and Time: {datetime.date.today()} at {datetime.datetime.now().strftime("%I:%M %p")}
+ Operating System: {os.name} {platform.system()} {platform.release()}
+ System Architecture: {architecture}
+ Number of CPUs: {os.cpu_count()}
+ Machine Type: {platform.machine()}
+ Python Version: {platform.python_version()}
+ Python Build Date and Compiler: {build_date} with {compiler}
+ Python Implementation: {implementation}
+ Active pip environment: {os.environ.get('PIP_DEFAULT_ENV', 'None')}
+ Path to Interpreter:         {sys.executable}
+ Path to virtual environment: {sys.prefix}
+ Current Working Directory:   {os.getcwd()}
+ Path to source directory:    {get_source_directory_path()}
+ Path to script file:         {fn}
+ User's Home Directory:       {user_home}
+{DIVIDER}
+{DIVIDER}
 """
 
 
-# -------------------------------------------------------------
-# Call some functions and execute code!
+# ---------------------------------------------------------------------------
+# If this is the script we are running, then call some functions and execute code!
+# ---------------------------------------------------------------------------
 
-# Call our print_header() function on this file to test it
-# Python provides a built-in attribute representing the file name
-# two underscores on each side of the word 'file'
-print(get_header(__file__))
+if __name__ == "__main__":
+    # We are using the get_header function and providing it with the path to this script.
+    # This will generate the debug information for the current script.
+    debug_info = get_header(__file__)
 
-print_to_file = True
+    # Print the debug information to the console.
+    print(debug_info)
 
-if print_to_file:
-    # print to a file named about.txt
-    fn = "about.txt"
-    with open(fn, "w") as f:
-        f.write(get_header(__file__))
+    # Print the debug information to a file named by the value in OUTPUT_FILENAME.
+    print_info_to_file(OUTPUT_FILENAME, debug_info)
