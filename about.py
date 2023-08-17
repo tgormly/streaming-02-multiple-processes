@@ -1,18 +1,25 @@
 """
-about.py: 
+======================= INSTRUCTOR-GENERATED FILE =======================
 
-A utility script to display essential debugging information. 
-It provides system information, Python details, file paths, and more. 
+This is an auxiliary script to assist with debugging and understanding
+your Python environment and system setup. It is NOT part of the main project tasks.
 
-This provides an overview of the system and configuration.
+You do NOT need to understand all the details or modify this file. 
+
+Run this script before beginning your project. 
+It will print information to the terminal and save it in a file named `about.txt`.
+If you face issues, review this file and share its contents to help with debugging.
+
+This script uses ONLY modules included in the Python standard library.
+No additional installations are required.
 
 To use, simply execute this script: `python about.py`
-It will print this information to a new file named `about.txt`.
 
-This script does NOT require a virtual environment.
-It uses ONLY modules found in the Python standard library.
+@Author: Denise Case
+@Updated: 2023-08
 
-Author: Denise Case
+==========================================================================
+
 """
 
 # Import from Python Standard Library
@@ -20,9 +27,10 @@ Author: Denise Case
 import datetime
 import os
 import platform
+import shutil
 import sys
 
-# Declare program constants
+# Declare program constants (typically constants are named with ALL_CAPS)
 
 DIVIDER = "=" * 70  # A string divider for cleaner output formatting
 OUTPUT_FILENAME = "about.txt"  # File name for saving the debug information
@@ -34,7 +42,35 @@ implementation = platform.python_implementation()
 architecture = platform.architecture()[0]
 user_home = os.path.expanduser("~")
 
+
 # Define program functions (bits of reusable code)
+
+
+def get_terminal_info():
+    """Determine the terminal and environment."""
+    term_program = os.environ.get("TERM_PROGRAM", "")
+    term_program_version = os.environ.get("TERM_PROGRAM_VERSION", "").lower()
+
+    if term_program == "vscode":
+        environment = "VS Code"
+        if "powershell" in term_program_version:
+            current_shell = "powershell"
+        else:
+            # Fallback approach for VS Code
+            current_shell = (
+                os.environ.get("SHELL", os.environ.get("ComSpec", ""))
+                .split(os.sep)[-1]
+                .lower()
+            )
+    else:
+        environment = "Native Terminal"
+        current_shell = (
+            os.environ.get("SHELL", os.environ.get("ComSpec", ""))
+            .split(os.sep)[-1]
+            .lower()
+        )
+
+    return environment, current_shell
 
 
 def get_source_directory_path():
@@ -43,6 +79,16 @@ def get_source_directory_path():
     """
     dir = os.path.dirname(os.path.abspath(__file__))
     return dir
+
+
+def is_git_in_path():
+    """
+    Checks if git is available in the PATH.
+
+    Returns:
+    - bool: True if git is in the PATH, otherwise False.
+    """
+    return shutil.which("git") is not None
 
 
 def print_info_to_file(filename, content):
@@ -67,10 +113,13 @@ def get_header(fn):
     Returns:
     - str: Formatted debug information.
     """
+
+    environment, current_shell = get_terminal_info()
+
     return f"""
 {DIVIDER}
 {DIVIDER}
- Welcome to the Python Debugging Information Utility for NW 44-671!
+ Welcome to the Python Debugging Information Utility ABOUT.PY
  Date and Time: {datetime.date.today()} at {datetime.datetime.now().strftime("%I:%M %p")}
  Operating System: {os.name} {platform.system()} {platform.release()}
  System Architecture: {architecture}
@@ -86,6 +135,9 @@ def get_header(fn):
  Path to source directory:    {get_source_directory_path()}
  Path to script file:         {fn}
  User's Home Directory:       {user_home}
+ Terminal Environment:        {environment}
+ Terminal Type:               {current_shell}
+ Git available in PATH:       {is_git_in_path()} 
 {DIVIDER}
 {DIVIDER}
 """
