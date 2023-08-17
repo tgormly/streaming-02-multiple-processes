@@ -1,13 +1,13 @@
 # ============================================================
 # Basic .gitignore for Python projects with VS Code 
-# This file helps you specify which files should not be 
-# tracked by git, hence not added to your repository.
+# This file helps specify which files should not be 
+# tracked by git, and not added to the repository.
 # ============================================================
 
 # ============================================================
 # Virtual Environments
 # ============================================================
-# Generally, you'll want to exclude virtual environments from version control.
+# Generally, exclude virtual environments from version control.
 # They can be regenerated from a requirements.txt file and tend to be large.
 # .venv is a common name for virtual environments.
 .venv/
@@ -18,7 +18,8 @@ env/
 # Secrets
 # ============================================================
 # NEVER commit secrets. It's a security risk.
-.env  # Often used for environment variables and secrets.
+# .env is often used to hold environment variables and secrets.
+.env  
 
 # ============================================================
 # Python Artifacts
@@ -37,7 +38,7 @@ build/
 # Editor - Visual Studio Code
 # ============================================================
 # Visual Studio Code adds settings and cache directories 
-# that you might want to keep out of your repository.
+# that are generally kept out of the repository.
 .vscode/*
 .history/
 
@@ -45,7 +46,7 @@ build/
 # macOS System Files
 # ============================================================
 # macOS adds various hidden files to directories. 
-# You typically don't want these in your repository.
+# These are typically excluded from the repository.
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -58,8 +59,8 @@ build/
 # ============================================================
 # Backup & Temporary Files
 # ============================================================
-# These are often added by text editors and some tools. 
-# You typically don't want temporary or backup files in your repository.
+# These may be added by text editors and some tools. 
+# These are typically excluded from the repository.
 *~
 *.bak
 *.swp
@@ -68,6 +69,9 @@ build/
 # ============================================================
 # Logs & Databases
 # ============================================================
+# Logs and databases can get large and are typically excluded.
+# For some projects, it may be useful to track these files.
+# Comment out lines as needed to include them.
 *.log
 *.sql
 *.sqlite

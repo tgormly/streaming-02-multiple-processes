@@ -28,11 +28,11 @@ Clone **your** new GitHub repo down to the Documents folder on your local machin
 
 Explore your new project repo in VS Code on your local machine.
 
-## Task 4. Execute About Script
+## Task 4. Execute Check Script
 
-Execute about.py to generate some useful information.
+Execute 00_check_core.py to generate useful information.
 
-## Task 5. Execute Multiple Processes Script
+## Task 5. Execute Multiple Processes Project Script
 
 Execute multiple_processes.py.
 
