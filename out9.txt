@@ -1,0 +1,25 @@
+work_year,experience_level,employment_type,job_title,salary_in_usd,company_size
+2024,MI,FT,AI Architect,800000,M
+2024,EN,FT,Data Analyst,774000,M
+2024,SE,FT,Analytics Engineer,750000,M
+2024,MI,FT,Machine Learning Scientist,750000,M
+2024,SE,FT,Data Analyst,750000,M
+2024,MI,FT,Machine Learning Scientist,750000,M
+2023,MI,FT,Machine Learning Scientist,750000,M
+2023,MI,FT,Machine Learning Engineer,750000,M
+2023,MI,FT,Data Engineer,750000,M
+2023,SE,FT,Data Scientist,750000,M
+2024,SE,FT,Analytics Engineer,720000,M
+2024,MI,FT,Machine Learning Scientist,720000,M
+2024,SE,FT,Data Scientist,720000,M
+2024,MI,FT,Analytics Engineer,720000,M
+2024,SE,FT,Analytics Engineer,720000,M
+2024,SE,FT,Data Scientist,720000,M
+2024,MI,FT,Research Engineer,720000,M
+2024,MI,FT,Research Scientist,720000,M
+2024,MI,FT,Research Engineer,720000,M
+2023,SE,FT,Analytics Engineer,700000,M
+2023,MI,FT,Analytics Engineer,700000,M
+2024,SE,FT,Research Scientist,600000,M
+2024,SE,FT,Prompt Engineer,600000,M
+2024,SE,FT,Research Engineer,600000,M

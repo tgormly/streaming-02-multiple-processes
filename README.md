@@ -87,34 +87,6 @@ Use out3.txt to document the second run.
 
 To get more help on the early tasks, see [streaming-01-getting-started](https://github.com/denisecase/streaming-01-getting-started).
 
-### Select All, Copy, Paste
-
-On Windows the select all, copy, paste hotkeys are:
-
-- CTRL a 
-- CTRL c 
-- CTRL v 
-
-On a Mac the select all, copy, paste hotkeys are:
-
-- Command a
-- Command c
-- Command v
-
-Detailed copy/paste instructions (as needed)
-
-1. To use these keys to transfer your output into a file, 
-clear the terminal, run the script, then click in the terminal to make it active.
-1. To select all terminal content, hold CTRL and the 'a' key together. 
-1. To copy the selected content, hold CTRL and the 'c' key together. 
-1. To paste, open the destination file (e.g. out0.py) for editing.
-1. Click somewhere in the destination file to make it the active window.
-1. Now hit CTRL a (both together) to select all of the destination file.
-1. Hit CTRL v (both together) to paste the content from your clipboard.
-
-Do a web search to find helpful videos on anything that seems confusing
-and share them in our discussion.
-
 ### Reading Error Messages
 
 Python has pretty helpful error messages. 

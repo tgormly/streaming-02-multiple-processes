@@ -5,3 +5,38 @@ This will clear the console output.
 Run the file once while the tasks are short. 
 
 Copy and paste the terminal results (when task_duration is 0) here.
+
+PS C:\Users\timgo\Desktop\School\Summer2024\Data Streaming\Week 2\streaming-02-multiple-processes> & C:/Users/timgo/AppData/Local/Microsoft/WindowsApps/python3.11.exe "c:/Users/timgo/Desktop/School/Summer2024/Data Streaming/Week 2/streaming-02-multiple-processes/multiple_processes.py"
+2024-05-12 16:07:08,449 - INFO - 
+======================================================================
+STARTING UP.............................
+  Date and Time:    2024-05-12 at 04:07 PM
+  Operating System: nt Windows 10
+  Python Version:   3.11.9
+  Path to Interpreter:  C:\Users\timgo\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\python.exe
+======================================================================
+
+2024-05-12 16:07:08,450 - INFO - Called recreate_database().
+2024-05-12 16:07:08,450 - INFO - Called drop_table().
+2024-05-12 16:07:08,455 - INFO - Table 'pets' dropped successfully.
+2024-05-12 16:07:08,456 - INFO - Called create_table().
+2024-05-12 16:07:08,462 - INFO - Table 'pets' created successfully.
+2024-05-12 16:07:08,666 - INFO - Called process_one().
+2024-05-12 16:07:08,667 - INFO -   Called insert_pet() with process=P1, name=Ace, breed=Dog.
+2024-05-12 16:07:08,672 - INFO -   Called insert_pet() with process=P1, name=Buddy, breed=Dog.
+2024-05-12 16:07:08,727 - INFO - Called process_two().
+2024-05-12 16:07:08,727 - INFO -   Called insert_pet() with process=P2, name=Cooper, breed=Rabbit.
+2024-05-12 16:07:08,732 - INFO -   Called insert_pet() with process=P2, name=Dingo, breed=Dog.
+2024-05-12 16:07:08,804 - INFO - Called process_three().
+2024-05-12 16:07:08,805 - INFO -   Called insert_pet() with process=P3, name=Emma, breed=Rabbit.
+2024-05-12 16:07:08,812 - INFO -   Called insert_pet() with process=P3, name=Felix, breed=Cat.
+2024-05-12 16:07:08,827 - INFO - 
+SUCCESS: All processes successfully completed!
+
+Now - increase the task duration (representing
+      the time the task has the database
+      tied up during an insert statement).
+How well do multiple, concurrent processes share a database
+    when each task takes more time?
+How can multiple processes share a resource
+    without interfering with each other?
